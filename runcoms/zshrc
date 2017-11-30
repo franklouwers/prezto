@@ -14,20 +14,35 @@ fi
 
 # Frank's aliases
 alias n='ssh november'
+alias grep='ggrep -a --color=auto'
+alias rgrep='grep -r'
+alias mtr='sudo mtr'
+unset GREP_COLORS
+export GREP_COLOR="01;32"
+export HOMEBREW_GITHUB_API_TOKEN=701b3f6bfe64e5dd102286ce80ae76f69efd2f15
 
 # rbenv needs this
 export PATH=~/.rbenv/shims:$PATH
 
 # Chef
-export CHEF_ENV=production
 alias kne='knife node edit'
 alias knl='knife node list'
-
-
-# Defaults and co
-export VISUAL=vim
-export editor=$VISUAL
 
 # Z because z
 . /usr/local/etc/profile.d/z.sh
 alias zz='z -l'
+
+# pdf_join
+function pdf_join {
+  join_py="/System/Library/Automator/Combine PDF Pages.action/Contents/Resources/join.py"
+  read "output_file?Name of output file > "
+  "$join_py" -o $output_file $@ && open $output_file
+}
+
+
+PATH="/Users/frank/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/frank/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/frank/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/frank/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/frank/perl5"; export PERL_MM_OPT;
+
